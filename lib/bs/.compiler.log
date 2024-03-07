@@ -1,0 +1,30 @@
+#Start(1709853937995)
+
+  Warning number 23
+  /home/xgs/code/2024/pers/droplet-io/rescriptdemo/src/MyReducer.res:8:5-107
+
+   6 ┆ switch action {
+   7 ┆ | Inc(index) =>
+   8 ┆   {...state, counts: Belt.Array.mapWithIndex(state.counts, (i, count) =
+     ┆ > i == index ? count + 1 : count)}
+   9 ┆ | Dec(index) =>
+  10 ┆   {...state, counts: Belt.Array.mapWithIndex(state.counts, (i, count) =
+     ┆ > i == index ? count - 1 : count)}
+
+  All the fields are already explicitly listed in this record. You can remove the `...` spread.
+
+
+  Warning number 23
+  /home/xgs/code/2024/pers/droplet-io/rescriptdemo/src/MyReducer.res:10:5-107
+
+   8 │     {...state, counts: Belt.Array.mapWithIndex(state.counts, (i, count)
+     │  => i == index ? count + 1 : count)}
+   9 │   | Dec(index) =>
+  10 │     {...state, counts: Belt.Array.mapWithIndex(state.counts, (i, count)
+     │  => i == index ? count - 1 : count)}
+  11 │ }
+  12 │ 
+
+  All the fields are already explicitly listed in this record. You can remove the `...` spread.
+
+#Done(1709853938119)

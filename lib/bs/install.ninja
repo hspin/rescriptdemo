@@ -1,0 +1,40 @@
+rescript = 1
+rule cp
+  command = cp $i $out
+rule touch
+ command = touch $out
+o App.cmi : cp ../bs/src/App.cmi
+o App.cmj : cp ../bs/src/App.cmj
+o App.cmt : cp ../bs/src/App.cmt
+o App.res : cp ../../src/App.res
+o App.resi : cp ../../src/App.resi
+o App.cmti : cp ../bs/src/App.cmti
+o Main.cmi : cp ../bs/src/Main.cmi
+o Main.cmj : cp ../bs/src/Main.cmj
+o Main.cmt : cp ../bs/src/Main.cmt
+o Main.res : cp ../../src/Main.res
+o Timer.cmi : cp ../bs/src/Timer.cmi
+o Timer.cmj : cp ../bs/src/Timer.cmj
+o Timer.cmt : cp ../bs/src/Timer.cmt
+o Timer.res : cp ../../src/Timer.res
+o Clickbtns.cmi : cp ../bs/src/Clickbtns.cmi
+o Clickbtns.cmj : cp ../bs/src/Clickbtns.cmj
+o Clickbtns.cmt : cp ../bs/src/Clickbtns.cmt
+o Clickbtns.res : cp ../../src/Clickbtns.res
+o MyReducer.cmi : cp ../bs/src/MyReducer.cmi
+o MyReducer.cmj : cp ../bs/src/MyReducer.cmj
+o MyReducer.cmt : cp ../bs/src/MyReducer.cmt
+o MyReducer.res : cp ../../src/MyReducer.res
+o Showcount.cmi : cp ../bs/src/Showcount.cmi
+o Showcount.cmj : cp ../bs/src/Showcount.cmj
+o Showcount.cmt : cp ../bs/src/Showcount.cmt
+o Showcount.res : cp ../../src/Showcount.res
+o GroupCount.cmi : cp ../bs/src/GroupCount.cmi
+o GroupCount.cmj : cp ../bs/src/GroupCount.cmj
+o GroupCount.cmt : cp ../bs/src/GroupCount.cmt
+o GroupCount.res : cp ../../src/GroupCount.res
+o ValueStore.cmi : cp ../bs/src/ValueStore.cmi
+o ValueStore.cmj : cp ../bs/src/ValueStore.cmj
+o ValueStore.cmt : cp ../bs/src/ValueStore.cmt
+o ValueStore.res : cp ../../src/ValueStore.res
+build install.stamp : touch App.cmi App.cmj Main.cmi Main.cmj Timer.cmi Timer.cmj Clickbtns.cmi Clickbtns.cmj MyReducer.cmi MyReducer.cmj Showcount.cmi Showcount.cmj GroupCount.cmi GroupCount.cmj ValueStore.cmi ValueStore.cmj 

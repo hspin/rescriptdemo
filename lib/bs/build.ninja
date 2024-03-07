@@ -1,0 +1,61 @@
+rescript = 1
+g_finger := /home/xgs/code/2024/pers/droplet-io/node_modules/@rescript/react/lib/ocaml/install.stamp
+g_finger := /home/xgs/code/2024/pers/droplet-io/node_modules/@rescript/core/lib/ocaml/install.stamp
+g_finger := /home/xgs/code/2024/pers/droplet-io/node_modules/rescript-webapi/lib/ocaml/install.stamp
+g_finger := /home/xgs/code/2024/pers/droplet-io/node_modules/rescript-vitest/lib/ocaml/install.stamp
+rule astj
+  command = /home/xgs/code/2024/pers/droplet-io/node_modules/.pnpm/rescript@11.0.1/node_modules/rescript/linux/bsc.exe  -bs-v 11.0.1 -bs-jsx 4 -bs-jsx-mode automatic -open RescriptCore -absname -bs-ast -o $out $i
+o tests/App_test.ast : astj ../../tests/App_test.res
+rule deps_dev
+  command = /home/xgs/code/2024/pers/droplet-io/node_modules/.pnpm/rescript@11.0.1/node_modules/rescript/linux/bsb_helper.exe -g -hash 5bce6f46fc283933a44a8bcd7d0ee1d6 $in
+  restat = 1
+o tests/App_test.d : deps_dev tests/App_test.ast
+rule mij_dev
+  command = /home/xgs/code/2024/pers/droplet-io/node_modules/.pnpm/rescript@11.0.1/node_modules/rescript/linux/bsc.exe -I tests -I src -I /home/xgs/code/2024/pers/droplet-io/node_modules/@rescript/react/lib/ocaml -I /home/xgs/code/2024/pers/droplet-io/node_modules/@rescript/core/lib/ocaml -I /home/xgs/code/2024/pers/droplet-io/node_modules/rescript-webapi/lib/ocaml -I /home/xgs/code/2024/pers/droplet-io/node_modules/rescript-vitest/lib/ocaml -open RescriptCore  -bs-package-name vite-react-rescript-starter -bs-package-output es6:$in_d:.bs.js -bs-v $g_finger $i
+  dyndep = 1
+  restat = 1
+o tests/App_test.cmj tests/App_test.cmi ../../tests/App_test.bs.js : mij_dev tests/App_test.ast
+o tests/Bindings.ast : astj ../../tests/Bindings.res
+o tests/Bindings.d : deps_dev tests/Bindings.ast
+o tests/Bindings.cmj tests/Bindings.cmi ../../tests/Bindings.bs.js : mij_dev tests/Bindings.ast
+o src/App.ast : astj ../../src/App.res
+rule deps
+  command = /home/xgs/code/2024/pers/droplet-io/node_modules/.pnpm/rescript@11.0.1/node_modules/rescript/linux/bsb_helper.exe -hash 5bce6f46fc283933a44a8bcd7d0ee1d6 $in
+  restat = 1
+o src/App.d : deps src/App.ast src/App.iast
+o src/App.iast : astj ../../src/App.resi
+rule mi
+  command = /home/xgs/code/2024/pers/droplet-io/node_modules/.pnpm/rescript@11.0.1/node_modules/rescript/linux/bsc.exe -I src -I /home/xgs/code/2024/pers/droplet-io/node_modules/@rescript/react/lib/ocaml -I /home/xgs/code/2024/pers/droplet-io/node_modules/@rescript/core/lib/ocaml -I /home/xgs/code/2024/pers/droplet-io/node_modules/rescript-webapi/lib/ocaml -open RescriptCore  -bs-v $g_finger $i
+  dyndep = 1
+  restat = 1
+o src/App.cmi : mi src/App.iast
+rule mj
+  command = /home/xgs/code/2024/pers/droplet-io/node_modules/.pnpm/rescript@11.0.1/node_modules/rescript/linux/bsc.exe -bs-read-cmi -I src -I /home/xgs/code/2024/pers/droplet-io/node_modules/@rescript/react/lib/ocaml -I /home/xgs/code/2024/pers/droplet-io/node_modules/@rescript/core/lib/ocaml -I /home/xgs/code/2024/pers/droplet-io/node_modules/rescript-webapi/lib/ocaml -open RescriptCore  -bs-package-name vite-react-rescript-starter -bs-package-output es6:$in_d:.bs.js -bs-v $g_finger $i
+  dyndep = 1
+  restat = 1
+o src/App.cmj ../../src/App.bs.js : mj src/App.ast src/App.cmi
+o src/Main.ast : astj ../../src/Main.res
+o src/Main.d : deps src/Main.ast
+rule mij
+  command = /home/xgs/code/2024/pers/droplet-io/node_modules/.pnpm/rescript@11.0.1/node_modules/rescript/linux/bsc.exe -I src -I /home/xgs/code/2024/pers/droplet-io/node_modules/@rescript/react/lib/ocaml -I /home/xgs/code/2024/pers/droplet-io/node_modules/@rescript/core/lib/ocaml -I /home/xgs/code/2024/pers/droplet-io/node_modules/rescript-webapi/lib/ocaml -open RescriptCore  -bs-package-name vite-react-rescript-starter -bs-package-output es6:$in_d:.bs.js -bs-v $g_finger $i
+  dyndep = 1
+  restat = 1
+o src/Main.cmj src/Main.cmi ../../src/Main.bs.js : mij src/Main.ast
+o src/Timer.ast : astj ../../src/Timer.res
+o src/Timer.d : deps src/Timer.ast
+o src/Timer.cmj src/Timer.cmi ../../src/Timer.bs.js : mij src/Timer.ast
+o src/Clickbtns.ast : astj ../../src/Clickbtns.res
+o src/Clickbtns.d : deps src/Clickbtns.ast
+o src/Clickbtns.cmj src/Clickbtns.cmi ../../src/Clickbtns.bs.js : mij src/Clickbtns.ast
+o src/MyReducer.ast : astj ../../src/MyReducer.res
+o src/MyReducer.d : deps src/MyReducer.ast
+o src/MyReducer.cmj src/MyReducer.cmi ../../src/MyReducer.bs.js : mij src/MyReducer.ast
+o src/Showcount.ast : astj ../../src/Showcount.res
+o src/Showcount.d : deps src/Showcount.ast
+o src/Showcount.cmj src/Showcount.cmi ../../src/Showcount.bs.js : mij src/Showcount.ast
+o src/GroupCount.ast : astj ../../src/GroupCount.res
+o src/GroupCount.d : deps src/GroupCount.ast
+o src/GroupCount.cmj src/GroupCount.cmi ../../src/GroupCount.bs.js : mij src/GroupCount.ast
+o src/ValueStore.ast : astj ../../src/ValueStore.res
+o src/ValueStore.d : deps src/ValueStore.ast
+o src/ValueStore.cmj src/ValueStore.cmi ../../src/ValueStore.bs.js : mij src/ValueStore.ast
